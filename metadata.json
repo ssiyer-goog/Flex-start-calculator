@@ -1,0 +1,5 @@
+
+{
+  "name": "GCP GPU Cost Comparator",
+  "description": "A UI demo to compare GPU costs across different GCP consumption models (Flex-start, On-demand, CUDs)."
+}

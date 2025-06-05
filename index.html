@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Consumption Model Cost Comparator</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GPU Consumption Model Cost Comparator</h1>
+            <p>Compare Flex-start, On-demand, 1-year CUD, and 3-year CUD pricing.</p>
+        </header>
+
+        <main class="main-content">
+            <section class="controls-pane" aria-labelledby="controls-heading">
+                <h2 id="controls-heading">Usage Requirements</h2>
+
+                <div class="control-group">
+                    <label for="machine-family">Machine Family:</label>
+                    <select id="machine-family" aria-label="Select Machine Family"></select>
+                </div>
+
+                <fieldset class="pricing-inputs">
+                    <legend>Price per GPU per Hour ($)</legend>
+                    <div class="input-group">
+                        <label for="price-flex-start">Flex-start:</label>
+                        <input type="number" id="price-flex-start" step="0.01" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="price-on-demand">On-demand:</label>
+                        <input type="number" id="price-on-demand" step="0.01" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="price-1y-cud">1-year CUD:</label>
+                        <input type="number" id="price-1y-cud" step="0.01" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="price-3y-cud">3-year CUD:</label>
+                        <input type="number" id="price-3y-cud" step="0.01" min="0">
+                    </div>
+                </fieldset>
+
+                <div class="control-group slider-group">
+                    <label for="num-gpus" id="num-gpus-label">Number of GPUs: <span id="num-gpus-value"></span></label>
+                    <input type="range" id="num-gpus" min="1" max="256" aria-labelledby="num-gpus-label">
+                </div>
+
+                <div class="control-group slider-group">
+                    <label for="daily-gpu-hours" id="daily-gpu-hours-label">Daily GPU Usage (hours): <span id="daily-gpu-hours-value"></span></label>
+                    <input type="range" id="daily-gpu-hours" min="1" max="24" aria-labelledby="daily-gpu-hours-label">
+                </div>
+
+                <div class="control-group slider-group">
+                    <label for="workload-days" id="workload-days-label">Workload Days per Week: <span id="workload-days-value"></span></label>
+                    <input type="range" id="workload-days" min="1" max="7" aria-labelledby="workload-days-label">
+                </div>
+            </section>
+
+            <section class="results-pane" aria-labelledby="results-heading">
+                <h2 id="results-heading">Weekly Cost Comparison</h2>
+                
+                <div id="cost-chart-container" class="chart-container" role="figure" aria-label="Weekly cost comparison bar chart">
+                    <div class="chart-bar-placeholder">
+                        <p>Adjust controls to see cost comparison.</p>
+                    </div>
+                </div>
+
+                <div id="cost-summary" class="cost-summary" aria-live="polite">
+                    <!-- Cost details will be populated here -->
+                </div>
+
+                <div id="savings-summary" class="savings-summary" aria-live="polite">
+                    <!-- Savings details will be populated here -->
+                </div>
+                
+                <div class="model-info">
+                  <details>
+                    <summary>What is Flex-start?</summary>
+                    <p>Flex-Start is a consumption model for compute on GCP designed to improve resource obtainability for workloads that can accommodate flexible start times. Customers can persist their resource requests without facing stockouts. Once capacity is available, their workload is provisioned with VMs for a user-defined maximum run duration (up to 7 days), after which the VMs are automatically terminated.</p>
+                    <p><strong>Compelling for customers:</strong></p>
+                    <ul>
+                        <li>Improved Resource Obtainability</li>
+                        <li>New Flex-Start SKUs with Discounted Pricing</li>
+                        <li>Optimized for Defined-Duration Jobs</li>
+                        <li>Simplified Access & Broad Service Integration</li>
+                    </ul>
+                  </details>
+                  <details>
+                    <summary>On-demand Model</summary>
+                    <p><strong>Benefits:</strong> Highest flexibility, immediate start (when capacity available).</p>
+                    <p><strong>Considerations:</strong> Highest hourly cost.</p>
+                  </details>
+                  <details>
+                    <summary>1-year CUD Model</summary>
+                    <p>You are paying for 24x7 usage.</p>
+                    <p><strong>Benefits:</strong> Discounted vs. On-Demand for committed 24/7 usage over 1 year.</p>
+                    <p><strong>Considerations:</strong> Cost-effective if actual GPU utilization is consistently high. 1-year commitment.</p>
+                  </details>
+                  <details>
+                    <summary>3-year CUD Model</summary>
+                    <p>You are paying for 24x7 usage.</p>
+                    <p><strong>Benefits:</strong> Deepest discount for long-term, committed 24/7 usage.</p>
+                    <p><strong>Considerations:</strong> Best for very stable, long-term high utilization. 3-year commitment.</p>
+                  </details>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Costs are illustrative and based on user inputs. Always check official GCP pricing.</p>
+        </footer>
+    </div>
+    <script type="module" src="index.js"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

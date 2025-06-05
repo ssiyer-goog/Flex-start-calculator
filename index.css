@@ -1,0 +1,309 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    color: #1a73e8; /* Google Blue */
+    margin-bottom: 5px;
+}
+
+.main-content {
+    display: flex;
+    gap: 30px;
+}
+
+.controls-pane {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.results-pane {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.controls-pane h2, .results-pane h2 {
+    color: #3c4043;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+.control-group label, .pricing-inputs legend {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #5f6368;
+}
+
+.control-group select,
+.control-group input[type="number"],
+.control-group input[type="range"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.control-group input[type="number"] {
+    max-width: 150px;
+}
+
+.control-group select {
+    cursor: pointer;
+}
+
+.control-group input[type="range"] {
+    padding: 0; /* Reset padding for range inputs */
+    cursor: pointer;
+}
+
+.slider-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-group span { /* For slider value display */
+    font-weight: normal;
+    color: #1a73e8;
+    background-color: #e8f0fe;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+
+.pricing-inputs {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.pricing-inputs legend {
+    padding: 0 10px;
+    font-weight: 500;
+    color: #5f6368;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    flex-basis: 100px; /* Adjust as needed */
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-weight: normal;
+}
+
+/* Chart Styles */
+.chart-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    min-height: 300px; /* Ensure space for chart */
+    display: flex;
+    align-items: stretch; /* Changed from flex-end: Make bar-wrappers take full height */
+    justify-content: space-around;
+    gap: 15px; /* Space between bars */
+}
+
+.chart-bar-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #757575;
+}
+
+.bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center bar and label */
+    justify-content: flex-end; /* Push bar and label to the bottom of the wrapper */
+    text-align: center;
+    flex: 1; /* Equal width for wrappers */
+    max-width: 100px; /* Max width for each bar set */
+}
+
+.bar {
+    width: 100%; /* Full width of its wrapper */
+    background-color: #4285f4; /* Default bar color */
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease-out;
+    position: relative; /* For value display */
+}
+
+.bar-value {
+    position: absolute;
+    top: -20px; /* Position above the bar */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    color: #333;
+    white-space: nowrap;
+}
+
+.bar-label {
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: #5f6368;
+    word-break: break-word;
+}
+
+/* Specific bar colors */
+.bar.flex-start { background-color: #34a853; } /* Green */
+.bar.on-demand { background-color: #ea4335; } /* Red */
+.bar.one-year-cud { background-color: #fbbc05; } /* Yellow */
+.bar.three-year-cud { background-color: #4285f4; } /* Blue */
+
+.cost-summary, .savings-summary {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e8f0fe;
+    border-left: 4px solid #1a73e8;
+    border-radius: 4px;
+}
+
+.cost-summary h3, .savings-summary h3 {
+    margin-top: 0;
+    color: #1a73e8;
+}
+
+.cost-summary p, .savings-summary p {
+    margin: 5px 0;
+}
+
+.cost-summary strong, .savings-summary strong {
+    color: #3c4043;
+}
+
+.model-info {
+    margin-top: 30px;
+}
+
+.model-info details {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+}
+
+.model-info summary {
+    font-weight: 500;
+    cursor: pointer;
+    color: #1a73e8;
+}
+
+.model-info details[open] summary {
+    margin-bottom: 10px;
+}
+
+.model-info p, .model-info ul {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+.model-info ul {
+    padding-left: 20px;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9em;
+    color: #5f6368;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .main-content {
+        flex-direction: column;
+    }
+    .controls-pane {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        padding-right: 0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .results-pane {
+        padding-left: 0;
+    }
+    .chart-container {
+        flex-direction: row; /* Keep bars side-by-side */
+        min-height: 250px; /* Adjust height */
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    .pricing-inputs .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .pricing-inputs .input-group label {
+        margin-bottom: 5px;
+    }
+    .control-group input[type="number"] {
+        max-width: 100%;
+    }
+
+    .chart-container {
+        gap: 10px;
+    }
+     .bar-value {
+        font-size: 0.7em;
+        top: -15px;
+    }
+    .bar-label {
+        font-size: 0.75em;
+    }
+}
